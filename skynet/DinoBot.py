@@ -11,7 +11,6 @@ class DinoBot(Dino):
         if brain is not None:
             self.net = brain
         else:
-            # Distance to next object; vertical speed
             self.net = PredictiveNeuralNet([3, 10, 3])
         self.fitness = -1
 
@@ -24,10 +23,6 @@ class DinoBot(Dino):
         else:
             self.score += 1
         data = self.net.predict()
-        # if data[0][0] < 0.5:
-        #     super().jump()
-        # else:
-        #     super().duck()
         index = np.argmax(data)
         if index == 0:
             super().jump()

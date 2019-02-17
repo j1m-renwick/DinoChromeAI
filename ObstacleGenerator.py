@@ -22,14 +22,14 @@ large_cactus_obstacles = ["resources/cacti/cactus_large_1.png",
                           "resources/cacti/cactus_large_4.png",
                           "resources/cacti/cactus_large_group_1.png"]
 
-flying_obstacles = [(["resources/birds/double_bird_1.png", "resources/birds/double_bird_2.png"])]
+flying_obstacles = [(["resources/birds/bird_1.png", "resources/birds/bird_2.png"])]
 
 
 class ObstacleGenerator:
 
-    def __init__(self, screen_object, dino_crouch_height):
+    def __init__(self, screen_object, max_elevation_height):
         self.screen_object = screen_object
-        self.dino_crouch_height = dino_crouch_height
+        self.max_elevation_height = max_elevation_height
         self.counter = 0
 
     def generate(self):
@@ -51,7 +51,7 @@ class ObstacleGenerator:
             return Cactus(self.screen_object, random.choice(large_cactus_obstacles))
         else:
             self.counter = abs(BIRD_GAP_COEFFICIENT * self.screen_object.scroll_rate)
-            return Bird(self.screen_object, random.choice(flying_obstacles), self.dino_crouch_height)
+            return Bird(self.screen_object, random.choice(flying_obstacles), random.randint(0, self.max_elevation_height))
 
     def reset(self):
         self.counter = 0

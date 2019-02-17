@@ -1,3 +1,5 @@
+import random
+
 import pygame
 import numpy as np
 
@@ -17,6 +19,8 @@ SCREEN_X = 1000
 SCREEN_Y = 500
 size = (SCREEN_X, SCREEN_Y)
 GROUND_BASELINE = SCREEN_Y - 30
+# Don't hardcode this
+MAX_ELEVATION_HEIGHT = 100
 SCROLL_RATE = -7
 screen_object = Screen(pygame.display.set_mode(size), GROUND_BASELINE, SCROLL_RATE)
 
@@ -30,8 +34,7 @@ clock.tick(60)
 # change this to enable one play-controlled dino for development
 IS_PLAYER_CONTROLLED = False
 
-# TODO make the elevation of birds random
-obstacle_generator = ObstacleGenerator(screen_object, 60)
+obstacle_generator = ObstacleGenerator(screen_object, MAX_ELEVATION_HEIGHT)
 generation_counter = 1
 
 ground = Ground(screen_object)
