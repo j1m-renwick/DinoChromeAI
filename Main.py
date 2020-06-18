@@ -12,6 +12,7 @@ from skynet.PredictiveNeuralNet import PredictiveNeuralNet
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 PURPLE = (77, 75, 153)
+LIGHT_BLUE = (233,245,249)
 
 SCREEN_X = 1000
 SCREEN_Y = 500
@@ -22,7 +23,7 @@ screen_object = Screen(pygame.display.set_mode(size), GROUND_BASELINE, SCROLL_RA
 
 pygame.init()
 
-font = pygame.font.SysFont("helvetica", 28)
+font = pygame.font.SysFont("helvetica mono", 28)
 
 clock = pygame.time.Clock()
 clock.tick(60)
@@ -58,7 +59,7 @@ while True:
     if new_obstacle is not None:
         obstacles.append(new_obstacle)
 
-    screen_object.screen.fill(WHITE)
+    screen_object.screen.fill(LIGHT_BLUE)
 
     ground.animate()
 
